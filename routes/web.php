@@ -15,8 +15,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/auth/login', function () {
     return view('auth.login');
 });
+
+Route::get('/data/keranjang', function () {
+    return view('data.keranjang');
+})->name('data.keranjang');
+
+Route::get('/data/console', function () {
+    return view('data.console');
+})->name('data.console');
+
+Route::get('/data/gamepad', function () {
+    return view('data.gamepad');
+})->name('data.gamepad');
