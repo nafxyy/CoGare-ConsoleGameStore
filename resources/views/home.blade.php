@@ -5,6 +5,7 @@
         <div class="w-full flex flex-col">
             @include('components.navbar')
             @include('components.hero')
+            @include('components.footer')
         </div>
     </div>
 
@@ -13,5 +14,5 @@
     @include('components.produk')
     {{-- @include('components.address') --}}
     {{-- @include('components.contact') --}}
-    {{-- @include('components.footer') --}}
+
 @endsection

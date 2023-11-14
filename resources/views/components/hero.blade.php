@@ -2,7 +2,7 @@
 <div class="w-full flex flex-col z-0 px-4 pt-[10%]">
     <div class="h-[400px] max-w-[1200px] relative overflow-hidden">
         <img src="{{ asset('assets/images/ps5_banner.png') }}" alt="Alterion Thrift Shop"
-            class="absolute w-full h-full object-cover brightness-50">
+            class="absolute w-full h-full object-cover brightness-50 rounded-lg">
         <div class="h-full flex flex-col justify-center items-center text-white">
             <h1 class="font-bold text-4xl">Grab Yours Now!</h1><br>
         </div>
