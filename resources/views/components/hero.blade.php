@@ -1,6 +1,6 @@
 {{-- Hero --}}
 <div class="w-full flex flex-col z-0 px-4 pt-[10%]">
-    <div class="h-[400px] max-w-[1200px] relative overflow-hidden">
+    <div class="h-[400px] max-w-[full] relative overflow-hidden">
         <img src="{{ asset('assets/images/ps5_banner.png') }}" alt="Alterion Thrift Shop"
             class="absolute w-full h-full object-cover brightness-50 rounded-lg">
         <div class="h-full flex flex-col justify-center items-center text-white">
@@ -9,7 +9,7 @@
     </div>
 
     {{-- Div 4 Produk --}}
-    <div class="flex justify-center items-center text-white h-[500px] relative">
+    <div class="flex justify-center items-center text-white h-[450px] relative">
         <p class="absolute top-0 left-0 p-8 font-bold text-black text-3xl">New Arrival</p>
         <div class="flex space-x-8 pt-0">
             <div class="bg-slate-900 p-6 rounded-md text-center">
@@ -36,7 +36,7 @@
     </div>
 
     {{-- Another Set of Div 4 Produk --}}
-    <div class="flex justify-center items-center text-white h-[500px] relative mt-4">
+    <div class="flex justify-center items-center text-white h-[150px] mb-40 relative mt-4">
         <div class="flex space-x-8 pt-0">
             <div class="bg-slate-900 p-6 rounded-md text-center">
                 <img src="{{ asset('assets/images/ps5_banner.png') }}" alt="PS4" class="w-32 h-32 mb-4">

@@ -32,3 +32,11 @@ Route::get('/data/console', function () {
 Route::get('/data/gamepad', function () {
     return view('data.gamepad');
 })->name('data.gamepad');
+
+Route::get('/data/games', function () {
+    return view('data.games');
+})->name('data.games');
+
+Route::get('/data/detail_produk', function () {
+    return view('data.detail_produk');
+})->name('data.detail_produk');

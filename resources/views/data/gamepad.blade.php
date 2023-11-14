@@ -14,7 +14,7 @@ Gamepad
                 <h1 class="text-center text-4xl font-bold mb-8">LIST GAMEPAD</h1>
 
                 {{-- Produk 1-5 --}}
-                <div class="flex justify-center items-center text-white h-[500px] relative">
+                <div class="flex justify-center items-center text-white h-[200px] relative">
                     <div class="flex space-x-8 pt-0">
                         @for ($i = 1; $i <= 5; $i++)
                             <div class="bg-slate-900 p-6 rounded-md text-center">
@@ -26,7 +26,7 @@ Gamepad
                 </div>
 
                 {{-- Produk 6-10 --}}
-                <div class="flex justify-center items-center text-white h-[500px] relative mt-4">
+                <div class="flex justify-center items-center text-white h-[400px] relative mt-4">
                     <div class="flex space-x-8 pt-0">
                         @for ($i = 6; $i <= 10; $i++)
                             <div class="bg-slate-900 p-6 rounded-md text-center">
