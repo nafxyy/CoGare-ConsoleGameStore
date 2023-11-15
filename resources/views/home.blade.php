@@ -1,4 +1,9 @@
 @extends('layouts.global')
+
+@section('title')
+CoGare | Your Favorite Games Store
+@endsection
+
 @section('content')
     <div class="w-full h-full flex">
             @include('components.sidebar')
