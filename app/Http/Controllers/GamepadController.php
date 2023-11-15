@@ -12,7 +12,7 @@ class GamepadController extends Controller
     public function tambah()
     {
         return view('admin.crud.addGamepad', [
-            'gamepad' => Gamepad::all()
+            'consoles' => Console::all()
         ]);
     }
 
@@ -25,12 +25,15 @@ class GamepadController extends Controller
             'stok' => 'required|string',
             'platform' => 'required|string',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'console_id' => 'required',
+            'console_id' => 'required|exists:consoles,id',
             // Menambah validasi untuk gambar
         ]);
 
-        $gambarPath = $request->file('gambar')->store('images','public');
-        $validateData['gambar'] = $gambarPath;
+        // $gambarPath = $request->file('gambar')->store('images','public');
+        $validateData['console_id'] = $request->console_id;
+
+        $allConsoles = Console::pluck('nama', 'id');
+        $validateData['console_name'] = $allConsoles[$request->console_id];
 
         Gamepad::create($validateData);
 
@@ -42,36 +45,41 @@ class GamepadController extends Controller
     public function edit($id)
     {
         return view('admin.crud.editGamepad', [
-            'games' => Gamepad::all()->where('id', $id)->first(),
+            'gamepads' => Gamepad::all()->where('id', $id)->first(),
             'consoles' => Console::all(),
         ]);
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'id_gamepad' => 'required|string|max:20',
-            'nama' => 'required|string',
-            'harga' => 'required|string',
-            'stok' => 'required|string',
-            'platform' => 'required|string',
-            'gambar' => 'required|string',
-            'console_id' => 'required',
-        ]);
+{
+    $request->validate([
+        'id_gamepad' => 'required|string|max:20',
+        'nama' => 'required|string',
+        'harga' => 'required|string',
+        'stok' => 'required|string',
+        'platform' => 'required|string',
+        'console_id' => 'required',
+    ]);
+    $gamepad = Gamepad::findOrFail($id);
 
-        $gamepad = Gamepad::findOrFail($id);
-        $gamepad->update([
-            'id_gamepad' => $request->id_gamepad,
-            'nama' => $request->nama,
-            'harga' => $request->harga,
-            'stok' => $request->stok,
-            'platform' => $request->platform,
-            'console_id' => $request->console_id,
-            'gambar' => $request->gambar,
-        ]);
-        session()->flash('successedit', 'Berhasil Edit Produk!');
-        return redirect()->route('admin.gamepad');
+    $gamepad->update([
+        'id_gamepad' => $request->id_gamepad,
+        'nama' => $request->nama,
+        'harga' => $request->harga,
+        'stok' => $request->stok,
+        'platform' => $request->platform,
+        'console_id' => $request->console_id,
+    ]);
+
+    if ($request->hasFile('gambar')) {
+
+        $gambarPath = $request->file('gambar')->store('images', 'public');
+        $gamepad->update(['gambar' => $gambarPath]);
     }
+
+    session()->flash('successedit', 'Berhasil Edit Produk!');
+    return redirect()->route('admin.gamepad');
+}
 
     public function delete($id)
     {

@@ -12,7 +12,7 @@ class GameController extends Controller
     public function tambah()
     {
         return view('admin.crud.addGame', [
-            'games' => Games::all()
+            'consoles' => Console::all()
         ]);
     }
 
@@ -25,12 +25,14 @@ class GameController extends Controller
             'stok' => 'required|string',
             'platform' => 'required|string',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'console_id' => 'required',
-            // Menambah validasi untuk gambar
+            'console_id' => 'required|exists:consoles,id',
         ]);
 
-        $gambarPath = $request->file('gambar')->store('images','public');
-        $validateData['gambar'] = $gambarPath;
+        // $gambarPath = $request->file('gambar')->store('images', 'public');
+        $validateData['console_id'] = $request->console_id;
+
+        $allConsoles = Console::pluck('nama', 'id');
+        $validateData['console_name'] = $allConsoles[$request->console_id];
 
         Games::create($validateData);
 
@@ -48,38 +50,45 @@ class GameController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'id_game' => 'required|string|max:20',
-            'judul' => 'required|string',
-            'harga' => 'required|string',
-            'stok' => 'required|string',
-            'platform' => 'required|string',
-            'gambar' => 'required|string',
-            'console_id' => 'required',
-        ]);
+{
+    $request->validate([
+        'id_game' => 'required|string|max:20',
+        'judul' => 'required|string',
+        'harga' => 'required|string',
+        'stok' => 'required|string',
+        'platform' => 'required|string',
+        'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'console_id' => 'required|exists:consoles,id',
+    ]);
 
-        $games = Games::findOrFail($id);
-        $games->update([
-            'id_game' => $request->id_game,
-            'judul' => $request->judul,
-            'harga' => $request->harga,
-            'stok' => $request->stok,
-            'platform' => $request->platform,
-            'console_id' => $request->console_id,
-            'gambar' => $request->gambar,
-        ]);
-        session()->flash('successedit', 'Berhasil Edit Produk!');
-        return redirect()->route('admin.game');
+    $games = Games::findOrFail($id);
+
+    if ($request->hasFile('gambar')) {
+        Storage::delete('public/images/' . $games->gambar);
+        $games->gambar = $request->file('gambar')->store('images', 'public');
     }
+
+    // Update other fields
+    $games->id_game = $request->id_game;
+    $games->judul = $request->judul;
+    $games->harga = $request->harga;
+    $games->stok = $request->stok;
+    $games->platform = $request->platform;
+    $games->console_id = $request->console_id;
+
+    $games->save();
+
+    session()->flash('successedit', 'Berhasil Edit Produk!');
+    return redirect()->route('admin.game');
+}
 
     public function delete($id)
     {
         $games = Games::findOrFail($id);
-        Storage::delete('public/images/'.$games->gambar);
+        Storage::delete('public/images/' . $games->gambar);
         $games->delete();
         session()->flash('successhapus', 'Berhasil Hapus Produk!');
-        return redirect()->route('admin.dataGame');
+        return redirect()->route('admin.game');
     }
 
 }

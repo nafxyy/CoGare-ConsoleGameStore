@@ -1,14 +1,14 @@
 @extends('layouts.global')
 
 @section('title')
-    Admin - Tambah Data Gamepad
+    Admin - Edit Data Gamepad
 @endsection
 
 @section('content')
     <div class="bg-slate-900 flex justify-center items-center pt-[100px] pb-[50px]">
         <div class="w-8/12 p-16 pt-12 pb-12 rounded-xl bg-white text-center divide-y-2 flex flex-col">
-            <h1 class="text-3xl mb-4 font-bold">Tambah Data Gamepad</h1>
-            <form action="{{ route('gamepad.store') }}" method="post" enctype="multipart/form-data" class="pt-8 w-full md:pl-8">
+            <h1 class="text-3xl mb-4 font-bold">Edit Data Gamepad</h1>
+            <form action="{{ route('gamepad.update', $gamepad) }}" method="post" enctype="multipart/form-data" class="pt-8 w-full md:pl-8">
                 @csrf
                 <div class="w-full relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
@@ -79,6 +79,16 @@
                     </div>
                     <input type="file" name="gambar" accept="image/*"
                         class="w-full ps-12 pe-4 py-2 bg-slate-50 rounded-sm ring-1 ring-slate-300 focus:outline-none focus:ring-blue-500">
+                </div>
+
+                <div class="w-full relative mt-6">
+                    <select type="text" name="console_id"
+                    class="w-full ps-12 pe-4 py-2 bg-slate-50 rounded-sm ring-1 ring-slate-300 focus:outline-none focus:ring-blue-500">
+                        <option value="" disabled selected>ID Console...</option>
+                        @foreach ($consoles as $csl)
+                            <option value="{{ $csl->id }}">{{ $csl->nama }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <button type="submit"
                     class="w-full h-auto py-4 mt-16 text-white font-medium bg-slate-900 rounded-md flex-auto just hover:bg-slate-700">Tambah

@@ -46,26 +46,37 @@ class ConsoleController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'id_console' => 'required|string|max:20',
-            'nama' => 'required|string',
-            'harga' => 'required|string',
-            'stok' => 'required|string',
-            'gambar' => 'required|string'
-        ]);
+{
+    $request->validate([
+        'id_console' => 'required|string|max:20',
+        'nama' => 'required|string',
+        'harga' => 'required|string',
+        'stok' => 'required|string',
+        'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+    ]);
 
-        $console = Console::findOrFail($id);
-        $console->update([
-            'id_console' => $request->id_console,
-            'nama' => $request->nama,
-            'harga' => $request->harga,
-            'stok' => $request->stok,
-            'gambar' => $request->gambar,
-        ]);
-        session()->flash('successedit', 'Berhasil Edit Produk!');
-        return redirect()->route('admin.console');
+    $console = Console::findOrFail($id);
+
+    $console->id_console = $request->id_console;
+    $console->nama = $request->nama;
+    $console->harga = $request->harga;
+    $console->stok = $request->stok;
+
+    if ($request->hasFile('gambar')) {
+        // Hapus file gambar lama
+        Storage::delete('public/images/' . $console->gambar);
+
+        // Unggah file gambar baru
+        $gambarPath = $request->file('gambar')->store('images', 'public');
+        $console->gambar = $gambarPath;
     }
+
+    $console->save();
+
+    session()->flash('successedit', 'Berhasil Edit Produk!');
+    return redirect()->route('admin.console');
+}
+
 
     public function delete($id)
     {
