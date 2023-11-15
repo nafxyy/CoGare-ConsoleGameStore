@@ -11,7 +11,7 @@ class ConsoleController extends Controller
     public function tambah()
     {
         return view('admin.crud.addConsole', [
-            'consoles' => Console::all()
+            'console' => Console::all()
         ]);
     }
 
@@ -73,6 +73,6 @@ class ConsoleController extends Controller
         Storage::delete('public/images/'.$console->gambar);
         $console->delete();
         session()->flash('successhapus', 'Berhasil Hapus Produk!');
-        return redirect()->route('staff.produk_admin');
+        return redirect()->route('admin.dataConsole');
     }
 }

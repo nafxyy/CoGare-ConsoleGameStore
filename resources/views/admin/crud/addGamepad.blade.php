@@ -5,10 +5,9 @@
 @endsection
 
 @section('content')
-    <div class="bg-slate-900 flex justify-center items-center">
+    <div class="bg-slate-900 flex justify-center items-center pt-[100px] pb-[50px]">
         <div class="w-8/12 p-16 pt-12 pb-12 rounded-xl bg-white text-center divide-y-2 flex flex-col">
             <h1 class="text-3xl mb-4 font-bold">Tambah Data Gamepad</h1>
-            <h5>Lets Add a New Data!</h5>
             <form action="{{ route('gamepad.store') }}" method="post" enctype="multipart/form-data" class="pt-8 w-full md:pl-8">
                 @csrf
                 <div class="w-full relative">
