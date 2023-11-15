@@ -46,8 +46,6 @@ class AuthController extends Controller
         session()->flash('success', 'Akun berhasil dibuat!');
         return redirect('/auth/login');
     }
-
-
     public function loginAction(Request $request) {
         $data = [
             'username' => $request->username,
@@ -66,5 +64,10 @@ class AuthController extends Controller
             session()->flash('error', 'Username atau Password anda salah!');
             return redirect('/auth/login');
         }
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect('/');
     }
 }

@@ -16,11 +16,13 @@
 
         <!-- User Info-->
         <div class="flex items-center mr-[250px]">
-            <p class="mr-2 text-white font-bold">Hello, User!</p>
-            <div>
-                <img src="{{ asset('assets/images/profile.jpg') }}" alt="User Profile"
-                    class="w-8 h-8 ml-8 rounded-full">
-            </div>
+            @auth
+            <p class="mr-6 text-2xl text-white">Hello, {{ auth()->user()->username }}!</p>
+        @else
+            <a href="{{ route('login') }}" class="bg-green-600 px-8 py-4 w-24 rounded-lg font-bold flex justify-center">
+                <p class="text-white">Login</p>
+            </a>
+        @endauth
         </div>
 
         {{-- <div class="basis-1/4 flex justify-end">

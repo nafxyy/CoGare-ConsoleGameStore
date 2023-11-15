@@ -1,7 +1,11 @@
 <?php
 
+use App\Models\Console;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\ConsoleController;
+use App\Http\Controllers\GamepadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +22,11 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-//Login dan Register
+Route::get('/data/console', function () {
+    return view('data.console',["console"=>Console::all()]);
+})->name('data.console');
+
+// ------ Login dan Register ---------- //
 Route::get('/auth/login', function () {
     return view('auth.login');
 })->name('login');
@@ -35,6 +43,11 @@ Route::post('/register/action', [
     AuthController::class, 'registerAction'
 ])->name('register.action');
 
+// ------ LOGOUT ----- //
+Route::get('/logout', [
+    AuthController::class, 'logout'
+])->name('logout');
+
 Route::middleware('auth')->group(function () {
     //Dashboard Admin
     Route::get('/admin/dashboardAdmin', function () {
@@ -42,6 +55,7 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+// ------ DATA PRODUK ------- //
 Route::get('/data/keranjang', function () {
     return view('data.keranjang');
 })->name('data.keranjang');
@@ -61,3 +75,44 @@ Route::get('/data/games', function () {
 Route::get('/data/detail_produk', function () {
     return view('data.detail_produk');
 })->name('data.detail_produk');
+
+// ------ DATA ADMIN ------- //
+Route::get('/admin/dashboardAdmin', function () {
+    return view('admin.dashboardAdmin');
+})->name('admin.dashboardAdmin');
+
+Route::get('/admin/dataConsole', function () {
+    return view('admin.dataConsole');
+})->name('admin.dataConsole');
+
+Route::get('/admin/dataGame', function () {
+    return view('admin.dataGame');
+})->name('admin.dataGame');
+
+Route::get('/admin/dataGamepad', function () {
+    return view('admin.dataGamepad');
+})->name('admin.dataGamepad');
+
+Route::controller(ConsoleController::class)->group(function(){
+    Route::get('/admin/console/tambah', 'tambah')->name('console.add');
+    Route::post('/admin/console/tambah/action','store')->name('console.store');
+    Route::get('/admin/console/edit/{id}', 'edit')->name('console.edit');
+    Route::post('/admin/console/edit/{id}/action','update')->name('console.update');
+    Route::post('/admin/console/delete/{id}/action', 'delete')->name('console.delete');
+});
+
+Route::controller(GameController::class)->group(function(){
+    Route::get('/admin/game/tambah', 'tambah')->name('game.add');
+    Route::post('/admin/game/tambah/action','store')->name('game.store');
+    Route::get('/admin/game/edit/{id}', 'edit')->name('game.edit');
+    Route::post('/admin/game/edit/{id}/action','update')->name('game.update');
+    Route::post('/admin/game/delete/{id}/action', 'delete')->name('game.delete');
+});
+
+Route::controller(GamepadController::class)->group(function(){
+    Route::get('/admin/gamepad/tambah', 'tambah')->name('gamepad.add');
+    Route::post('/admin/gamepad/tambah/action','store')->name('gamepad.store');
+    Route::get('/admin/gamepad/edit/{id}', 'edit')->name('gamepad.edit');
+    Route::post('/admin/gamepad/edit/{id}/action','update')->name('gamepad.update');
+    Route::post('/admin/gamepad/delete/{id}/action', 'delete')->name('gamepad.delete');
+});
