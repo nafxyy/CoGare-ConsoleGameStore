@@ -18,16 +18,28 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+//Login dan Register
 Route::get('/auth/login', function () {
     return view('auth.login');
-});
+})->name('login');
 
 Route::post('/login/action', [
     AuthController::class, 'loginAction'
 ])->name('login.action');
 
-Route::get('/admin/dashboardAdmin', function () {
-    return view('admin.dashboardAdmin');
+Route::get('/auth/register', function () {
+    return view('auth.register');
+})->name('register');
+
+Route::post('/register/action', [
+    AuthController::class, 'registerAction'
+])->name('register.action');
+
+Route::middleware('auth')->group(function () {
+    //Dashboard Admin
+    Route::get('/admin/dashboardAdmin', function () {
+        return view('admin.dashboardAdmin');
+    });
 });
 
 Route::get('/data/keranjang', function () {

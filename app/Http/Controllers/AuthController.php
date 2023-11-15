@@ -23,17 +23,24 @@ class AuthController extends Controller
         }
         //['role','username','password','nama_asli','email','foto_profil'];
         // Buat akun pengguna baru
+        $request->validate([
+            'foto_profil'=>'required|image|mimes:png,jpg,jpeg,|max:10048'
+        ]);
+
+        //save gambar
+        $path=$request->file('foto_profil')->store('images','public');
+
         User::create([
             'role' => $request->role,
             'username' => $request->username,
             'password' => Hash::make($request->password),
             'nama_asli' => $request->nama_asli,
             'email' => $request->email,
-            'foto_profil' => $request->foto_profil,
+            'foto_profil' =>$path
         ]);
 
         session()->flash('success', 'Akun berhasil dibuat!');
-        return redirect('/auth/signUp');
+        return redirect('/auth/login');
     }
 
     public function loginAction(Request $request) {

@@ -32,7 +32,7 @@ Log In | CoGare
         <div class="flex flex-col w-full h-screen px-[10%] py-[8%]">
             <div class="w-full flex justify-between">
                 <p></p>
-                <a href="#"><button class="bg-cyan-800 rounded-sm px-10 py-2 text-lime-200 font-bold">Register</button></a>
+                <a href="{{route('register')}}"><button class="bg-cyan-800 rounded-sm px-10 py-2 text-lime-200 font-bold">Register</button></a>
             </div>
             <div class="w-full h-full items-center">
                 <img src="{{asset('assets/images/vector-stik.png')}}" alt="" class="w-[80%] py-[15%]">
