@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -15,33 +16,37 @@ class AuthController extends Controller
             return redirect('/auth/register');
         }
 
-        // Periksa apakah username sudah digunakan
-        $usernameExist = User::where('email', $request->email)->first();
-        if ($usernameExist) {
-            session()->flash('error', 'Username sudah digunakan!');
+        // Periksa apakah email sudah digunakan
+        $emailExist = User::where('email', $request->email)->first();
+        if ($emailExist) {
+            session()->flash('error', 'Email sudah digunakan!');
             return redirect('/auth/register');
         }
+
         //['role','username','password','nama_asli','email','foto_profil'];
-        // Buat akun pengguna baru
-        $request->validate([
-            'foto_profil'=>'required|image|mimes:png,jpg,jpeg,|max:10048'
+        $validateData = $request->validate([
+            'role' => 'required|string',
+            'username' => 'required|string',
+            'password' => 'required|string',
+            'nama_asli' => 'required|string',
+            'email' => 'required|string',
+            'foto_profil' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            // Menambah validasi untuk gambar
         ]);
 
-        //save gambar
-        $path=$request->file('foto_profil')->store('images','public');
+        // Simpan gambar ke folder
+        $nama_foto = rand();
+        $path = public_path('assets/images/profil_user/');
+        $gambarPath = $request->file('foto_profil')->move($path, $nama_foto . '-' . $request->file('foto_profil')->getClientOriginalName());
 
-        User::create([
-            'role' => $request->role,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-            'nama_asli' => $request->nama_asli,
-            'email' => $request->email,
-            'foto_profil' =>$path
-        ]);
+        $validateData['foto_profil'] = $gambarPath;
+        $validateData['password'] = Hash::make($request->password);
+        User::create($validateData);
 
         session()->flash('success', 'Akun berhasil dibuat!');
         return redirect('/auth/login');
     }
+
 
     public function loginAction(Request $request) {
         $data = [

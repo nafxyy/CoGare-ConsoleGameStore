@@ -12,6 +12,15 @@ Log In | CoGare
             <p class="text-white font-semibold text-sm pt-[2%]">Hi, Welcome back 👋</p>
             <form action="{{route('login.action')}}" method="POST" class="pt-[10%]  flex flex-col">
                 @csrf
+                @if(session('success'))
+                    <div class="w-[70%] relative mb-6">
+                        <div class="p-2 rounded-sm bg-green-100 ring-1 ring-green-500">
+                            <p class="text-green-500">
+                                {{ session('success') }}
+                            </p>
+                        </div>
+                    </div>
+                @endif
                 @if (session('error'))
                     <div class="w-[60%] relative mb-6">
                         <div class="p-2 rounded-sm bg-red-800">
