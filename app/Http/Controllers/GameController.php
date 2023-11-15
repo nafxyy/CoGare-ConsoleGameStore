@@ -35,7 +35,7 @@ class GameController extends Controller
         Games::create($validateData);
 
         session()->flash('successedit', 'Berhasil Tambah Produk!');
-        return redirect()->route('admin.dataGame');
+        return redirect()->route('admin.game');
     }
 
 
@@ -70,7 +70,7 @@ class GameController extends Controller
             'gambar' => $request->gambar,
         ]);
         session()->flash('successedit', 'Berhasil Edit Produk!');
-        return redirect()->route('admin.dataGame');
+        return redirect()->route('admin.game');
     }
 
     public function delete($id)

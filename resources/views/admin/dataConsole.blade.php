@@ -68,7 +68,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($consoles as $csl)
+                                    @foreach ($console as $csl)
                                         <tr class="bg-white border-b">
                                             <td class="px-6 py-4">
                                                 {{ $csl->id }}
@@ -90,8 +90,8 @@
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="w-full h-auto">
-                                                    <a href = "{{ route('admin.editConsole', $csl->id) }}" class="p-2 bg-blue-400 rounded-md hover:bg-blue-200 text-black">Edit</a>
-                                                    <form action="{{route('admin.delete', $csl->id)}}" method="post">
+                                                    <a href = "{{ route('console.edit', $csl->id) }}" class="p-2 bg-blue-400 rounded-md hover:bg-blue-200 text-black">Edit</a>
+                                                    <form action="{{route('console.delete', $csl->id)}}" method="post">
                                                         @csrf
                                                         <button type="submit" class="px-6 py-2 bg-red-600 rounded-md text text-white" onclick="return confirm('Apakah anda yakin Ingin Hapus Data?')">Hapus</button>
                                                     </form>

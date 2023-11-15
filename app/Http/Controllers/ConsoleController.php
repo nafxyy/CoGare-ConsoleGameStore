@@ -33,7 +33,7 @@ class ConsoleController extends Controller
         Console::create($validateData);
 
         session()->flash('successedit', 'Berhasil Tambah Produk!');
-        return redirect()->route('admin.dataConsole');
+        return redirect()->route('admin.console');
     }
 
 
@@ -64,7 +64,7 @@ class ConsoleController extends Controller
             'gambar' => $request->gambar,
         ]);
         session()->flash('successedit', 'Berhasil Edit Produk!');
-        return redirect()->route('admin.dataConsole');
+        return redirect()->route('admin.console');
     }
 
     public function delete($id)
@@ -73,6 +73,6 @@ class ConsoleController extends Controller
         Storage::delete('public/images/'.$console->gambar);
         $console->delete();
         session()->flash('successhapus', 'Berhasil Hapus Produk!');
-        return redirect()->route('admin.dataConsole');
+        return redirect()->route('admin.console');
     }
 }

@@ -35,7 +35,7 @@ class GamepadController extends Controller
         Gamepad::create($validateData);
 
         session()->flash('successedit', 'Berhasil Tambah Produk!');
-        return redirect()->route('admin.dataGamepad');
+        return redirect()->route('admin.gamepad');
     }
 
 
@@ -70,7 +70,7 @@ class GamepadController extends Controller
             'gambar' => $request->gambar,
         ]);
         session()->flash('successedit', 'Berhasil Edit Produk!');
-        return redirect()->route('admin.dataGamepad');
+        return redirect()->route('admin.gamepad');
     }
 
     public function delete($id)
@@ -79,6 +79,6 @@ class GamepadController extends Controller
         Storage::delete('public/images/'.$gamepad->gambar);
         $gamepad->delete();
         session()->flash('successhapus', 'Berhasil Hapus Produk!');
-        return redirect()->route('admin.dataGamepad');
+        return redirect()->route('admin.gamepad');
     }
 }

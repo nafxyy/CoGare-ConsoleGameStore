@@ -70,35 +70,33 @@
                                 </th>
                             </tr>
                         </thead>
-                        {{-- <tbody>
-                            @foreach ($console as $csl)
+                        <tbody>
+                            {{-- protected $fillable = ['id_game', 'judul', 'harga', 'stok', 'platform', 'gambar', 'console_id']; --}}
+                            @foreach ($game as $g)
                                 <tr class="bg-white border-b">
                                     <td class="px-6 py-4">
-                                        {{ $csl->id }}
+                                        {{ $g->id }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $csl->id_produk }}
+                                        {{ $g->id_game }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $csl->nama }}
+                                        {{ $g->judul }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $csl->harga }}
+                                        {{ $g->harga }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $csl->stok }}
+                                        {{ $g->stok }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $csl->ukuran }}
+                                        {{ $g->platform }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $csl->deskripsi }}
+                                        {{ $g->gambar }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $csl->kategori_id }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $csl->nama }}
+                                        {{ $g->console_id }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="w-full h-auto">
@@ -111,7 +109,7 @@
                                     </td>
                                 </tr>
                             @endforeach
-                        </tbody> --}}
+                        </tbody>
                     </table>
                 </div>
             </div>
