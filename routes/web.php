@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,14 @@ Route::get('/', function () {
 
 Route::get('/auth/login', function () {
     return view('auth.login');
+});
+
+Route::post('/login/action', [
+    AuthController::class, 'loginAction'
+])->name('login.action');
+
+Route::get('/admin/dashboardAdmin', function () {
+    return view('admin.dashboardAdmin');
 });
 
 Route::get('/data/keranjang', function () {
