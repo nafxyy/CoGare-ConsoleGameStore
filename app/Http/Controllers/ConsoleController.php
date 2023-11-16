@@ -26,7 +26,7 @@ class ConsoleController extends Controller
         ]);
 
         $nama_foto = rand();
-        $gambarPath = $request->file('gambar')->storeAs('assets/images/console', $nama_foto . '-' . $request->file('gambar')->getClientOriginalName());
+        $gambarPath = $request->file('gambar')->move('assets/images/console', $nama_foto . '-' . $request->file('gambar')->getClientOriginalName());
 
         // Menambahkan nama file ke dalam $validateData
         $validateData['gambar'] = $nama_foto . '-' . $request->file('gambar')->getClientOriginalName();
@@ -65,8 +65,10 @@ class ConsoleController extends Controller
     $console->stok = $request->stok;
 
     if ($request->hasFile('gambar')) {
-        // Hapus file gambar lama
-        Storage::delete('public/images/' . $console->gambar);
+        $gambarPath = public_path('assets/images/console/' . $console->gambar);
+        if (file_exists($gambarPath)) {
+            unlink($gambarPath);
+        }
 
         // Unggah file gambar baru
         $nama_foto = rand();
@@ -85,7 +87,10 @@ class ConsoleController extends Controller
     public function delete($id)
     {
         $console = Console::findOrFail($id);
-        Storage::disk('public')->delete('assets/images/console/'.$console->gambar);
+        $gambarPath = public_path('assets/images/console/' . $console->gambar);
+        if (file_exists($gambarPath)) {
+            unlink($gambarPath);
+        }
         $console->delete();
         session()->flash('successhapus', 'Berhasil Hapus Produk!');
         return redirect()->route('admin.console');

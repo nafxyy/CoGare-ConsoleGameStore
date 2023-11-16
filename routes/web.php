@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use App\Models\Games;
 use App\Models\Console;
 use App\Models\Gamepad;
@@ -21,7 +22,7 @@ use App\Http\Controllers\GamepadController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home',['user'=>User::all()]);
 })->name('home');
 
 

@@ -15,9 +15,10 @@
         </a>
 
         <!-- User Info-->
-        <div class="flex items-center mr-[250px]">
+        <div class="flex items-center mr-[280px]">
             @auth
             <p class="mr-6 text-2xl text-white">Hello, {{ auth()->user()->username }}!</p>
+            <img src="{{asset('assets/images/profil_user/'.auth()->user()->foto_profil)}}" alt="" class="w-[50px] object-contain rounded-full">
         @else
             <a href="{{ route('login') }}" class="bg-green-600 px-8 py-4 w-24 rounded-lg font-bold flex justify-center">
                 <p class="text-white">Login</p>

@@ -1,4 +1,4 @@
-<div class="w-[300px] bg-slate-800 ">
+<div class="w-[400px] bg-slate-800 ">
     <div class="fixed flex flex-col h-screen">
         <div class="w-full flex flex-col items-center mt-2">
             <img src="{{asset('assets/images/logopolos.png')}}" alt="" class="items-center w-[200px] object-contain">

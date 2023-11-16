@@ -36,10 +36,9 @@ class AuthController extends Controller
 
         // Simpan gambar ke folder
         $nama_foto = rand();
-        $path = public_path('assets/images/profil_user/');
-        $gambarPath = $request->file('foto_profil')->move($path, $nama_foto . '-' . $request->file('foto_profil')->getClientOriginalName());
+        $gambarPath = $request->file('foto_profil')->move('assets/images/profil_user', $nama_foto . '-' . $request->file('foto_profil')->getClientOriginalName());
 
-        $validateData['foto_profil'] = $gambarPath;
+        $validateData['foto_profil'] = $nama_foto . '-' . $request->file('foto_profil')->getClientOriginalName();
         $validateData['password'] = Hash::make($request->password);
         User::create($validateData);
 
