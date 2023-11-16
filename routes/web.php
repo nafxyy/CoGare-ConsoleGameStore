@@ -22,7 +22,7 @@ use App\Http\Controllers\GamepadController;
 */
 
 Route::get('/', function () {
-    return view('home',['user'=>User::all()]);
+    return view('home',['user'=>User::all()], ['console'=>Console::all()]);
 })->name('home');
 
 
@@ -90,32 +90,27 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-// ------ DATA PRODUK ------- //
+// ------ DATA PRODUK USER ------- //
 Route::get('/data/keranjang', function () {
     return view('data.keranjang');
 })->name('data.keranjang');
 
 Route::get('/data/console', function () {
-    return view('data.console');
+    return view('data.console',['console'=>Console::all()]);
 })->name('data.console');
 
 Route::get('/data/gamepad', function () {
-    return view('data.gamepad');
+    return view('data.gamepad',['gamepad'=>Gamepad::all()]);
 })->name('data.gamepad');
 
 Route::get('/data/games', function () {
-    return view('data.games');
+    return view('data.games',['game'=>Games::all()]);
 })->name('data.games');
 
 Route::get('/data/detail_produk', function () {
     return view('data.detail_produk');
 })->name('data.detail_produk');
 
-
-
-
-
-
-
-
-
+// Route::get('/data/console', function () {
+//     return view('admin.dataConsole',['console'=>Console::all()]);
+// })->name('admin.console');

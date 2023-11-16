@@ -1,7 +1,7 @@
- {{-- NavBar --}}
- <div class="w-full h-fit flex p-8 fixed items-center justify-between bg-slate-900 z-10">
-    <div class="flex items-center">
-       <input type="text" placeholder="Search console or games"
+{{-- NavBar --}}
+<div class="w-full h-fit flex p-8 fixed items-center justify-between bg-slate-900 z-10">
+    <div class="flex items-center ">
+       <input type="text" placeholder="Search console or games..."
            class="border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500">
     </div>
     <div class="flex items-center">
@@ -25,12 +25,6 @@
             </a>
         @endauth
         </div>
-
-        {{-- <div class="basis-1/4 flex justify-end">
-       <a href="{{route('login')}}" class="bg-black px-8 py-4 w-24 rounded-lg font-bold flex justify-center pr">
-           <p class="invisble text-white">Login</p>
-       </a>
-   </div> --}}
 
     </div>
 </div>
