@@ -86,7 +86,7 @@
                                                 {{ $csl->stok }}
                                             </td>
                                             <td class="px-6 py-4">
-                                                {{ $csl->nama }}
+                                                <img src="{{asset('assets/images/console/2062436447-wp11424863-efootball-pes-2023-wallpapers.jpg')}}" alt="" class="w-full">
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="w-full h-auto">

@@ -25,16 +25,18 @@ class ConsoleController extends Controller
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        // Simpan gambar ke folder 'public/images/produk_add'
-        $gambarPath = $request->file('gambar')->store('images','public');
+        $nama_foto = rand();
+        $gambarPath = $request->file('gambar')->storeAs('assets/images/console', $nama_foto . '-' . $request->file('gambar')->getClientOriginalName());
 
-        $validateData['gambar'] = $gambarPath;
+        // Menambahkan nama file ke dalam $validateData
+        $validateData['gambar'] = $nama_foto . '-' . $request->file('gambar')->getClientOriginalName();
 
         Console::create($validateData);
 
         session()->flash('successedit', 'Berhasil Tambah Produk!');
         return redirect()->route('admin.console');
     }
+
 
 
     public function edit($id)
@@ -67,7 +69,9 @@ class ConsoleController extends Controller
         Storage::delete('public/images/' . $console->gambar);
 
         // Unggah file gambar baru
-        $gambarPath = $request->file('gambar')->store('images', 'public');
+        $nama_foto = rand();
+        $path = public_path('assets/images/console/');
+        $gambarPath = $request->file('gambar')->move($path, $nama_foto . '-' . $request->file('gambar')->getClientOriginalName());
         $console->gambar = $gambarPath;
     }
 
@@ -81,7 +85,7 @@ class ConsoleController extends Controller
     public function delete($id)
     {
         $console = Console::findOrFail($id);
-        Storage::delete('public/images/'.$console->gambar);
+        Storage::disk('public')->delete('assets/images/console/'.$console->gambar);
         $console->delete();
         session()->flash('successhapus', 'Berhasil Hapus Produk!');
         return redirect()->route('admin.console');

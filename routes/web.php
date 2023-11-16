@@ -61,7 +61,7 @@ Route::middleware('auth')->group(function () {
     })->name('admin.game');
 
     Route::get('/admin/dataGamepad', function () {
-        return view('admin.dataGamepad',['game'=>Gamepad::all()]);
+        return view('admin.dataGamepad',['gamepad'=>Gamepad::all()]);
     })->name('admin.gamepad');
 
     Route::controller(ConsoleController::class)->group(function(){
