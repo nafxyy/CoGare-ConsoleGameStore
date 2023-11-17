@@ -1,9 +1,20 @@
 {{-- NavBar --}}
 <div class="w-full h-fit flex p-8 fixed items-center justify-between bg-slate-900 z-10">
-    <div class="flex items-center ">
-       <input type="text" placeholder="Search console or games..."
-           class="border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500">
+    <div class="flex items-center">
+        <form action="{{ route('search') }}" method="get">
+            <select name="type" class="border border-gray-300 px-2 py-1 rounded-md focus:outline-none">
+                <option value="console">Console</option>
+                <option value="games">Games</option>
+                <option value="gamepad">Gamepad</option>
+            </select>
+            <input type="text" name="search" placeholder="Search console or games..."
+                   class="border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500">
+            <button type="submit" class="ml-2 bg-blue-500 text-white px-4 py-2 rounded-md">
+                Search
+            </button>
+        </form>
     </div>
+
     <div class="flex items-center">
         <!-- Cart Icon -->
         @auth
@@ -15,7 +26,7 @@
             </svg>
         </a>
         @endauth
-        
+
         <!-- User Info-->
         <div class="flex items-center mr-[280px]">
             @auth

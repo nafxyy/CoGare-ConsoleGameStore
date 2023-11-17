@@ -8,10 +8,10 @@
         @include('components.sidebarAdmin')
         <div class="w-auto flex flex-col bg-slate-900">
             <div class="h-full m-4 p-8 bg-white rounded-lg drop-shadow-md">
-                <p class="text-4xl font-bold mb-4">List Data Gamepad</p>
+                <p class="text-4xl font-bold mb-4">List Data Produk</p>
                 <hr><br>
                 <div class="w-full h-auto flex justify-start">
-                    <a href= "{{route('gamepad.add')}}" class="px-4 py-2 bg-green-600 rounded-md text text-white">Tambah Data</a>
+                    <a href= "{{route('produk.add')}}" class="px-4 py-2 bg-green-600 rounded-md text text-white">Tambah Data</a>
                 </div><br>
                 @if(session('successhapus'))
                         <div class="w-full relative mb-6">
@@ -48,16 +48,19 @@
                                     No.
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    ID Gamepad
+                                    ID Produk
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Nama Gamepad
+                                    Nama Produk
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Harga Gamepad
+                                    Harga Produk
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Stok Gamepad
+                                    Stok Produk
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Jenis Produk
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Platform
@@ -66,43 +69,40 @@
                                     Gambar
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Console
-                                </th>
-                                <th scope="col" class="px-6 py-3">
                                     Aksi
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($gamepad as $gp)
+                            @foreach ($produk as $p)
                                 <tr class="bg-white border-b">
                                     <td class="px-6 py-4">
-                                        {{ $gp->id }}
+                                        {{ $p->id }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $gp->id_gamepad }}
+                                        {{ $p->id_produk }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $gp->nama }}
+                                        {{ $p->nama }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $gp->harga }}
+                                        {{ $p->harga }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $gp->stok }}
+                                        {{ $p->stok }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $gp->platform }}
+                                        {{ $p->jenis }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <img src="{{asset('assets/images/gamepad/'.$gp->gambar)}}" alt="" class="w-full">
+                                        {{ $p->platform }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $gp->console->nama }}
+                                        <img src="{{asset('assets/images/produk/'.$p->gambar)}}" alt="" class="w-full">
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class=" flex w-full h-auto">
-                                            <a href="{{ route('gamepad.edit', $gp->id) }}">
+                                            <a href="{{ route('produk.edit', $p->id) }}">
                                                 <button class="px-4 py-2 bg-yellow-300 rounded-md text"><svg
                                                         xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -111,9 +111,9 @@
                                                             d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                                     </svg></button>
                                             </a>
-                                            <form action="{{route('gamepad.delete', $gp->id)}}" method="POST">
+                                            <form action="{{route('produk.delete', $p->id)}}" method="POST">
                                                 @csrf
-                                                <button type="submit" onclick="return confirm('Yakin Ingin Hapus {{$gp->nama}} ?')"
+                                                <button type="submit" onclick="return confirm('Yakin Ingin Hapus {{$p->nama}} ?')"
                                                     class="px-4 py-2 bg-red-600 rounded-md text text-white"><svg
                                                         xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"

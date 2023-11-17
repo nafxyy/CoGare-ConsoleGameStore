@@ -103,4 +103,5 @@ class GamepadController extends Controller
         session()->flash('successhapus', 'Berhasil Hapus Produk!');
         return redirect()->route('admin.gamepad');
     }
+
 }

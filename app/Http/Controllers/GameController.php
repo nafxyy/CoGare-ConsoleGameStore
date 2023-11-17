@@ -36,7 +36,7 @@ class GameController extends Controller
         $allConsoles = Console::pluck('nama', 'id');
         $validateData['console_name'] = $allConsoles[$request->console_id];
 
-        Games::create($validateData);
+        // Games::create($validateData);
 
         session()->flash('successedit', 'Berhasil Tambah Produk!');
         return redirect()->route('admin.game');

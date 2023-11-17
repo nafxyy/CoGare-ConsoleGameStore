@@ -2,11 +2,14 @@
 
 use App\Models\User;
 use App\Models\Games;
+use App\Models\Produk;
 use App\Models\Console;
 use App\Models\Gamepad;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\GamepadController;
 
@@ -22,7 +25,7 @@ use App\Http\Controllers\GamepadController;
 */
 
 Route::get('/', function () {
-    return view('home',['user'=>User::all()], ['console'=>Console::all()]);
+    return view('home',['user'=>User::all()], ['produk'=>Produk::all()]);
 })->name('home');
 
 
@@ -62,31 +65,39 @@ Route::middleware('auth')->group(function () {
     })->name('admin.game');
 
     Route::get('/admin/dataGamepad', function () {
-        return view('admin.dataGamepad',['gamepad'=>Gamepad::all()]);
+        return view('admin.dataGamepad',['produk'=>Produk::all()]);
     })->name('admin.gamepad');
 
-    Route::controller(ConsoleController::class)->group(function(){
-        Route::get('/admin/console/tambah', 'tambah')->name('console.add');
-        Route::post('/admin/console/tambah/action','store')->name('console.store');
-        Route::get('/admin/console/edit/{id}', 'edit')->name('console.edit');
-        Route::post('/admin/console/edit/{id}/action','update')->name('console.update');
-        Route::post('/admin/console/delete/{id}/action', 'delete')->name('console.delete');
-    });
+    // Route::controller(ConsoleController::class)->group(function(){
+    //     Route::get('/admin/console/tambah', 'tambah')->name('console.add');
+    //     Route::post('/admin/console/tambah/action','store')->name('console.store');
+    //     Route::get('/admin/console/edit/{id}', 'edit')->name('console.edit');
+    //     Route::post('/admin/console/edit/{id}/action','update')->name('console.update');
+    //     Route::post('/admin/console/delete/{id}/action', 'delete')->name('console.delete');
+    // });
 
-    Route::controller(GameController::class)->group(function(){
-        Route::get('/admin/game/tambah', 'tambah')->name('game.add');
-        Route::post('/admin/game/tambah/action','store')->name('game.store');
-        Route::get('/admin/game/edit/{id}', 'edit')->name('game.edit');
-        Route::post('/admin/game/edit/{id}/action','update')->name('game.update');
-        Route::post('/admin/game/delete/{id}/action', 'delete')->name('game.delete');
-    });
+    // Route::controller(GameController::class)->group(function(){
+    //     Route::get('/admin/game/tambah', 'tambah')->name('game.add');
+    //     Route::post('/admin/game/tambah/action','store')->name('game.store');
+    //     Route::get('/admin/game/edit/{id}', 'edit')->name('game.edit');
+    //     Route::post('/admin/game/edit/{id}/action','update')->name('game.update');
+    //     Route::post('/admin/game/delete/{id}/action', 'delete')->name('game.delete');
+    // });
 
-    Route::controller(GamepadController::class)->group(function(){
-        Route::get('/admin/gamepad/tambah', 'tambah')->name('gamepad.add');
-        Route::post('/admin/gamepad/tambah/action','store')->name('gamepad.store');
-        Route::get('/admin/gamepad/edit/{id}', 'edit')->name('gamepad.edit');
-        Route::post('/admin/gamepad/edit/{id}/action','update')->name('gamepad.update');
-        Route::post('/admin/gamepad/delete/{id}/action', 'delete')->name('gamepad.delete');
+    // Route::controller(GamepadController::class)->group(function(){
+    //     Route::get('/admin/gamepad/tambah', 'tambah')->name('gamepad.add');
+    //     Route::post('/admin/gamepad/tambah/action','store')->name('gamepad.store');
+    //     Route::get('/admin/gamepad/edit/{id}', 'edit')->name('gamepad.edit');
+    //     Route::post('/admin/gamepad/edit/{id}/action','update')->name('gamepad.update');
+    //     Route::post('/admin/gamepad/delete/{id}/action', 'delete')->name('gamepad.delete');
+    // });
+
+    Route::controller(ProdukController::class)->group(function(){
+        Route::get('/admin/produk/tambah', 'tambah')->name('produk.add');
+        Route::post('/admin/produk/tambah/action','storeee')->name('produk.storeee');
+        Route::get('/admin/produk/edit/{id}', 'edit')->name('produk.edit');
+        Route::post('/admin/produk/edit/{id}/action','update')->name('produk.update');
+        Route::post('/admin/produk/delete/{id}/action', 'delete')->name('produk.delete');
     });
 });
 
@@ -100,21 +111,23 @@ Route::get('/data/checkout_sukses', function () {
 })->name('data.checkout_sukses');
 
 Route::get('/data/console', function () {
-    return view('data.console',['console'=>Console::all()]);
+    return view('data.console',['produk'=>Produk::all()]);
 })->name('data.console');
 
 Route::get('/data/gamepad', function () {
-    return view('data.gamepad',['gamepad'=>Gamepad::all()]);
+    return view('data.gamepad',['produk'=>Produk::all()]);
 })->name('data.gamepad');
 
 Route::get('/data/games', function () {
-    return view('data.games',['game'=>Games::all()]);
+    return view('data.games',['produk'=>Produk::all()]);
 })->name('data.games');
 
 Route::get('/data/detail_produk', function () {
     return view('data.detail_produk');
 })->name('data.detail_produk');
 
-// Route::get('/data/console', function () {
-//     return view('admin.dataConsole',['console'=>Console::all()]);
-// })->name('admin.console');
+// ------ SEARCH DATA ------- //
+Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+// ------ PESAN ----------- //
+Route::get('pesan/{id}', 'PesanController@index');

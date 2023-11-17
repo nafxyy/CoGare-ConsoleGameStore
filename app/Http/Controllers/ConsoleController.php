@@ -75,9 +75,11 @@ class ConsoleController extends Controller
             $nama_foto = rand();
             $gambarPath = $request->file('gambar')->move('assets/images/console', $nama_foto . '-' . $request->file('gambar')->getClientOriginalName());
             $console->gambar = $nama_foto . '-' . $request->file('gambar')->getClientOriginalName();
+            $console->update();
         }
-
-        $console->update();
+        else{
+            $console->update();
+        }
 
         session()->flash('successedit', 'Berhasil Edit Produk!');
         return redirect()->route('admin.console');
@@ -95,4 +97,5 @@ class ConsoleController extends Controller
         session()->flash('successhapus', 'Berhasil Hapus Produk!');
         return redirect()->route('admin.console');
     }
+
 }

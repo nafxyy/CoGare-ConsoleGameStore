@@ -22,11 +22,11 @@
         <h1 class="text-3xl font-bold text-left mb-8">New Arrival</h1>
         {{-- container 1 --}}
         <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
-            @foreach ($console as $csl)
+            @foreach ($produk as $pr)
                 <div class="bg-slate-900 p-4 rounded-lg shadow-lg text-center text-white">
-                    <img src="{{ asset('assets/images/console/' . $csl->gambar) }}" alt="Console Games" class="w-full h-auto">
-                    <h1 class="text-xl font-semibold mt-4">{{ $csl->nama }}</h1>
-                    <p class="show4 mt-2">{{ $csl->nama }}</p>
+                    <img src="{{ asset('assets/images/produk/' . $pr->gambar) }}" alt="Console Games" class="w-full h-auto">
+                    <h1 class="text-xl font-semibold mt-4">{{ $pr->nama }}</h1>
+                    <p class="show4 mt-2">{{ $pr->harga }}</p>
                 </div>
             @endforeach
 
