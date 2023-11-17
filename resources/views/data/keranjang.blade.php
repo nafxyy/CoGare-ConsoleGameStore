@@ -118,7 +118,7 @@
                     </div>
                     {{-- checkout button --}}
                     <div>
-                        <button class="bg-blue-500 text-white w-20 h-11 rounded-md">Checkout</button>
+                        <a href="{{ route('data.checkout_sukses') }}" class="bg-blue-500 text-white w-20 h-11 rounded-md flex items-center justify-center">Checkout</a>
                     </div>
                 </div>
 

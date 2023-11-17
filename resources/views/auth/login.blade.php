@@ -30,7 +30,7 @@ Log In | CoGare
                         </div>
                     </div>
                 @endif
-                <p class="py-[2%] text-white font-medium">Email</p>
+                <p class="py-[2%] text-white font-medium">Username</p>
                 <input type="text" name="username" placeholder="Enter your username" class="py-[1%] pl-[2%] rounded-sm w-[60%] focus:outline-none focus:ring ring-slate-900">
                 <p class="py-[2%] text-white font-medium">Password</p>
                 <input type="password" name="password" placeholder="Enter your password" class="py-[1%] pl-[2%] rounded-sm w-[60%] focus:outline-none focus:ring ring-slate-900">

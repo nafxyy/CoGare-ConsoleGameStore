@@ -95,6 +95,10 @@ Route::get('/data/keranjang', function () {
     return view('data.keranjang');
 })->name('data.keranjang');
 
+Route::get('/data/checkout_sukses', function () {
+    return view('data.checkout_sukses');
+})->name('data.checkout_sukses');
+
 Route::get('/data/console', function () {
     return view('data.console',['console'=>Console::all()]);
 })->name('data.console');
