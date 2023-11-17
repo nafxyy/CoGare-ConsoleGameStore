@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Pesanan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -52,12 +54,37 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($data)) {
-            $user = Auth::User();
+            $user = Auth::user();
 
             if ($user->role == 'admin') {
                 return redirect('/admin/dashboardAdmin');
             } elseif ($user->role == 'user') {
-                return redirect('/');
+                // Cek apakah pesanan belum ada dengan status belum dibayar
+                $pesananBelumDibayar = Pesanan::where([
+                    'user_id' => $user->id,
+                    'status' => 'belum dibayar',
+                ])->first();
+
+                if (!$pesananBelumDibayar) {
+                    // Jika pesanan belum ada, buat pesanan baru
+                    $kodeUnik = rand(0,10);
+                    $tanggalSekarang = now();
+
+                    $pesananBaru = Pesanan::create([
+                        'user_id' => $user->id,
+                        'tanggal' => $tanggalSekarang,
+                        'status' => 'belum dibayar',
+                        'kode' => $kodeUnik,
+                        'jumlah_harga' => 0,
+                        'total_item' => 0,
+                    ]);
+
+                    // Lakukan redirect atau tampilkan pesan sesuai kebutuhan
+                    return redirect('/');
+                } else {
+                    // Redirect ke halaman utama jika pesanan sudah ada
+                    return redirect('/');
+                }
             }
         } else {
             session()->flash('error', 'Username atau Password anda salah!');

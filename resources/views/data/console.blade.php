@@ -19,7 +19,11 @@
                                 <img src="{{ asset('assets/images/produk/' . $pr->gambar) }}" alt="Console Games" class="w-full h-auto">
                                 <h1 class="text-xl font-semibold mt-4">{{ $pr->nama }}</h1>
                                 <p class="show4 mt-2">Rp. {{ $pr->harga }}</p>
-                                <button type="submit" class="px-2 py-2 bg-yellow-700 rounded-lg">Masukkan Keranjang</button>
+                                <form action="{{ route('keranjang.store', ['id' => $pr->id]) }}" method="POST">
+                                    <input type="number" name="jumlah_pesan" value= 1>
+                                    <button type="submit" class="px-2 py-2 bg-yellow-700 rounded-lg">Masukkan Keranjang</button>
+                                </form>
+                                {{-- <button href="{{ route('data.keranjang', ['id' => $pr->id]) }}" type="submit" class="px-2 py-2 bg-yellow-700 rounded-lg">Masukkan Keranjang</button> --}}
                             </div>
                     @endforeach
                 </div>

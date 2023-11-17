@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use auth;
-use App\Models\Console;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class PesanController extends Controller
@@ -15,8 +15,8 @@ class PesanController extends Controller
 
     public function index($id)
     {
-    	$console = Console::where('id', $id)->first();
+    	$produk = Produk::where('id_produk', $id)->first();
 
-    	return view('pesan.index', compact('console'));
+    	return view('pesan.index', compact('produk'));
     }
 }

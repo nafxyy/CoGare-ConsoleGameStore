@@ -55,7 +55,7 @@ class ProdukController extends Controller
             'stok' => 'required|integer',
             'platform' => 'required|string',
             'jenis' => 'required|string',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         $produk = Produk::findOrFail($id);
         $produk->id_produk = $request->id_produk;
@@ -95,5 +95,10 @@ class ProdukController extends Controller
         $produk->delete();
         session()->flash('successhapus', 'Berhasil Hapus Produk!');
         return redirect()->route('admin.gamepad');
+    }
+
+    public function showDetailProduk($id) {
+        $produk = Produk::find($id);
+        return view('detail_produk', ['produk' => $produk]);
     }
 }

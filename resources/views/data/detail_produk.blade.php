@@ -13,14 +13,14 @@ Detail Produk
             <div class="container mx-auto mt-[150px] flex">
                 {{-- Gambar Produk --}}
                 <div class="flex-none w-1/2">
-                    <img src="{{ asset('assets/images/ps5_banner.png') }}" alt="Product Image" class="w-full h-auto">
+                    <img src="{{ asset('assets/images/produk/' . $produk->gambar) }}" alt="Product Image" class="w-full h-auto">
                 </div>
 
                 {{-- Detail Produk --}}
                 <div class="flex-auto ml-8">
-                    <h1 class="text-3xl font-bold mb-4">PLAYSTATION 5 DISC EDITION</h1>
-                    <p class="text-lg font-bold text-green-600 mb-4">Rp 1,000,000</p>
-                    <p class="text-gray-500 mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima fugit nesciunt ipsum sint similique provident magni, delectus mollitia officia, dolore rerum architecto porro? Tempora sequi enim, soluta maxime accusamus quidem.</p>
+                    <h1 class="text-3xl font-bold mb-4">{{ $produk->nama }}</h1>
+                    <p class="text-lg font-bold text-green-600 mb-4">Rp {{ $produk->harga }}</p>
+                    <p class="text-gray-500 mb-4">{{ $produk->deskripsi }}</p>
 
                     {{-- Add / Less Items --}}
                     <div class="flex items-center mb-4">

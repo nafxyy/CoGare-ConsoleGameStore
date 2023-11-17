@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //protected $fillable = ['tanggal', 'nama_barang', 'harga', 'jumlah','status'];
-        Schema::create('keranjangs', function (Blueprint $table) {
+        Schema::create('pesanans', function (Blueprint $table) {
             $table->id();
-            $table->integer('produk_id');
-            $table->integer('pesanan_id');
-            $table->integer('jumlah_item');
+            $table->integer('user_id');
+            $table->date('tanggal');
+            $table->string('status');
+            $table->integer('kode');
             $table->integer('jumlah_harga');
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('keranjangs');
+        Schema::dropIfExists('pesanans');
     }
 };

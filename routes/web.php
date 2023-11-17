@@ -4,14 +4,14 @@ use App\Models\User;
 use App\Models\Games;
 use App\Models\Produk;
 use App\Models\Console;
-use App\Models\Gamepad;
+use App\Models\Pesanan;
+use App\Models\Keranjang;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\ConsoleController;
-use App\Http\Controllers\GamepadController;
+use App\Http\Controllers\KeranjangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +99,14 @@ Route::middleware('auth')->group(function () {
         Route::post('/admin/produk/edit/{id}/action','update')->name('produk.update');
         Route::post('/admin/produk/delete/{id}/action', 'delete')->name('produk.delete');
     });
+
+    Route::controller(KeranjangController::class)->group(function(){
+        Route::get('/data/keranjang/{id}/action', 'pesan')->name('keranjang.add');
+        Route::post('/data/keranjang/{id}/action','pesan')->name('keranjang.store');
+        // Route::get('/data/keranjangedit/{id}', 'edit')->name('keranjang.edit');
+        // Route::post('/data/keranjangedit/{id}/action','update')->name('keranjang.update');
+        // Route::post('/data/keranjangdelete/{id}/action', 'delete')->name('keranjang.delete');
+    });
 });
 
 // ------ DATA PRODUK USER ------- //
@@ -123,7 +131,7 @@ Route::get('/data/games', function () {
 })->name('data.games');
 
 Route::get('/data/detail_produk', function () {
-    return view('data.detail_produk');
+    return view('data.detail_produk', ['produk'=>Produk::all()]);
 })->name('data.detail_produk');
 
 // ------ SEARCH DATA ------- //
@@ -131,3 +139,15 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 // ------ PESAN ----------- //
 Route::get('pesan/{id}', 'PesanController@index');
+
+// Route::get('/data/keranjang', function () {
+//     $userId = auth()->id();
+//     return view('data.keranjang', ['pesanan'=>Pesanan::where('user_id', $userId)->get()]);
+// })->name('data.keranjang');
+
+Route::get('/data/keranjang', function () {
+    $userId = auth()->id();
+    $pesananId = Pesanan::where('user_id', $userId)->get('id');
+    return view('data.keranjang', ['pesanan'=>Keranjang::where('pesanan_id', $pesananId)->get()]);
+})->name('data.keranjang');
+
