@@ -18,7 +18,7 @@
                                 d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
                         </svg>
                     </div>
-                    <input type="text" name="id_game" placeholder="ID Game..."
+                    <input type="text" name="id_game" placeholder="ID Game..." value="{{$games->id_game}}"
                         class="w-full ps-12 pe-4 py-2 bg-slate-50 rounded-sm ring-1 ring-slate-300 focus:outline-none focus:ring-blue-500">
                 </div>
                 <div class="w-full relative mt-6">
@@ -29,7 +29,7 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <input type="text" name="judul" placeholder="Judul Game..."
+                    <input type="text" name="judul" placeholder="Judul Game..." value="{{$games->judul}}"
                         class="w-full ps-12 pe-4 py-2 bg-slate-50 rounded-sm ring-1 ring-slate-300 focus:outline-none focus:ring-blue-500">
                 </div>
                 <div class="w-full relative mt-6">
@@ -42,7 +42,7 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <input type="text" name="harga" placeholder="Harga Game..."
+                    <input type="number" name="harga" placeholder="Harga Game..." value="{{$games->harga}}"
                         class="w-full ps-12 pe-4 py-2 bg-slate-50 rounded-sm ring-1 ring-slate-300 focus:outline-none focus:ring-blue-500">
                 </div>
                 <div class="w-full relative mt-6">
@@ -53,21 +53,10 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <input type="text" name="stok" placeholder="Stok Game..."
+                    <input type="number" name="stok" placeholder="Stok Game..." value="{{$games->stok}}"
                         class="w-full ps-12 pe-4 py-2 bg-slate-50 rounded-sm ring-1 ring-slate-300 focus:outline-none focus:ring-blue-500">
                 </div>
 
-                <div class="w-full relative mt-6">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                            <path fill-rule="evenodd"
-                                d="M2.25 2.25a.75.75 0 000 1.5H3v10.5a3 3 0 003 3h1.21l-1.172 3.513a.75.75 0 001.424.474l.329-.987h8.418l.33.987a.75.75 0 001.422-.474l-1.17-3.513H18a3 3 0 003-3V3.75h.75a.75.75 0 000-1.5H2.25zm6.54 15h6.42l.5 1.5H8.29l.5-1.5zm8.085-8.995a.75.75 0 10-.75-1.299 12.81 12.81 0 00-3.558 3.05L11.03 8.47a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l2.47-2.47 1.617 1.618a.75.75 0 001.146-.102 11.312 11.312 0 013.612-3.321z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <input type="text" name="platform" placeholder="Platform Game..."
-                        class="w-full ps-12 pe-4 py-2 bg-slate-50 rounded-sm ring-1 ring-slate-300 focus:outline-none focus:ring-blue-500">
-                </div>
 
                 <div class="w-full relative mt-6">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
@@ -80,16 +69,34 @@
                     <input type="file" name="gambar" accept="image/*"
                         class="w-full ps-12 pe-4 py-2 bg-slate-50 rounded-sm ring-1 ring-slate-300 focus:outline-none focus:ring-blue-500">
                 </div>
-
+                <div class="w-full relative mt-6">
+                    <p>{{$games->gambar}}</p>
+                    <img src="{{asset('assets/images/games/'.$games->gambar)}}" alt="">
+                </div>
                 <div class="w-full relative mt-6">
                     <select type="text" name="console_id"
                     class="w-full ps-12 pe-4 py-2 bg-slate-50 rounded-sm ring-1 ring-slate-300 focus:outline-none focus:ring-blue-500">
-                        <option value="" disabled selected>ID Console...</option>
+                        <option value="{{$games->console_id}}" disabled selected>{{$games->console->nama}}</option>
                         @foreach ($consoles as $csl)
                             <option value="{{ $csl->id }}">{{ $csl->nama }}</option>
                         @endforeach
                     </select>
                 </div>
+                <select name="platform" id="platform" hidden>
+                    @foreach ($consoles as $csl)
+                        <option value="{{ $csl->id }}">{{ $csl->nama }}</option>
+                    @endforeach
+                </select>
+                <script>
+                    // Menangani perubahan pada elemen console
+                    document.getElementById("console").addEventListener("change", function () {
+                        // Mengambil nilai console_id yang dipilih
+                        var consoleId = this.value;
+
+                        // Mengatur nilai dropdown platform dengan nilai yang sama
+                        document.getElementById("platform").value = consoleId;
+                    });
+                </script>
 
                 <button type="submit"
                     class="w-full h-auto py-4 mt-16 text-white font-medium bg-slate-900 rounded-md flex-auto just hover:bg-slate-700">Edit Data</button>

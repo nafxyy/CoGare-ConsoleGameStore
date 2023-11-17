@@ -19,7 +19,7 @@
                                         d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
                                 </svg>
                             </div>
-                            <input type="text" name="id_console" placeholder="ID_Console..."
+                            <input type="text" name="id_console" placeholder="ID_Console..." value="{{$consoles->id_console}}"
                                 class="w-full ps-12 pe-4 py-2 bg-slate-50 rounded-sm ring-1 ring-slate-300 focus:outline-none focus:ring-blue-500">
                         </div>
                         <div class="w-full relative mt-6">
@@ -31,7 +31,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input type="text" name="nama" placeholder="Nama Console..."
+                            <input type="text" name="nama" placeholder="Nama Console..." value="{{$consoles->nama}}"
                                 class="w-full ps-12 pe-4 py-2 bg-slate-50 rounded-sm ring-1 ring-slate-300 focus:outline-none focus:ring-blue-500">
                         </div>
                         <div class="w-full relative mt-6">
@@ -45,7 +45,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input type="text" name="harga" placeholder="Harga Console..."
+                            <input type="text" name="harga" placeholder="Harga Console..." value="{{$consoles->harga}}"
                                 class="w-full ps-12 pe-4 py-2 bg-slate-50 rounded-sm ring-1 ring-slate-300 focus:outline-none focus:ring-blue-500">
                         </div>
                         <div class="w-full relative mt-6">
@@ -57,7 +57,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input type="text" name="stok" placeholder="Stok Console..."
+                            <input type="text" name="stok" placeholder="Stok Console..." value="{{$consoles->stok}}"
                                 class="w-full ps-12 pe-4 py-2 bg-slate-50 rounded-sm ring-1 ring-slate-300 focus:outline-none focus:ring-blue-500">
                         </div>
 
@@ -70,8 +70,12 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input type="file" name="gambar" accept="image/*"
+                            <input type="file" name="gambar" accept="image/*" value="{{$consoles->gambar}}"
                                 class="w-full ps-12 pe-4 py-2 bg-slate-50 rounded-sm ring-1 ring-slate-300 focus:outline-none focus:ring-blue-500">
+
+                        </div>
+                        <div>
+                            <img src="{{asset('assets/images/console/'.$consoles->gambar)}}" alt="">
                         </div>
                         <button type="submit"
                             class="w-full h-auto py-4 mt-16 text-white font-medium bg-slate-900 rounded-md flex-auto just hover:bg-slate-700">Edit Data</button>

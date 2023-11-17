@@ -65,16 +65,16 @@ class GameController extends Controller
 
         $games = Games::findOrFail($id);
         if ($request->hasFile('gambar')) {
-            $gambarPath = public_path('assets/images/games/' . $games->gambar);
-            if (file_exists($gambarPath)) {
-                unlink($gambarPath);
+            //menghapus gambar sebelum diupdate
+            $oldImage = public_path('assets/images/games/' . $games->gambar);
+            if (file_exists($oldImage)) {
+                unlink($oldImage);
             }
 
             // Unggah file gambar baru
             $nama_foto = rand();
-            $path = public_path('assets/images/games/');
-            $gambarPath = $request->file('gambar')->move($path, $nama_foto . '-' . $request->file('gambar')->getClientOriginalName());
-            $games->gambar = $gambarPath;
+            $gambarPath = $request->file('gambar')->move('assets/images/games', $nama_foto . '-' . $request->file('gambar')->getClientOriginalName());
+            $games->gambar = $nama_foto . '-' . $request->file('gambar')->getClientOriginalName();
         }
 
 
@@ -86,7 +86,7 @@ class GameController extends Controller
         $games->platform = $request->platform;
         $games->console_id = $request->console_id;
 
-        $games->save();
+        $games->update();
 
         session()->flash('successedit', 'Berhasil Edit Produk!');
         return redirect()->route('admin.game');

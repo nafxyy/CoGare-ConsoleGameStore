@@ -5,7 +5,7 @@ Gamepad
 @endsection
 
 @section('content')
-    <div class="flex overflow-x-hidden h-screen">
+    <div class="flex overflow-x-hidden h-full">
         @include('components.sidebar')
         <div class="w-full">
             @include('components.navbar')
