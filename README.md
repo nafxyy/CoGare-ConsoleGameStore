@@ -35,4 +35,20 @@ Lalu untuk User Normal sama seperti user pada umumnya, yaitu dapat melihat, meme
 ![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/08b109ce-12c0-472d-a7b4-e6c1bbdbc12e)
 ### 10. History
 ![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/bee9f992-74f0-40a3-a618-5f8072ec1577)
+### 11. Search Produk
+![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/b86e3852-5eee-45ab-bfe3-d7ee2bed4d7f)
+
+##
+## Menu Admin:
+### 1. Dashboard
+![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/749ec1ae-9df1-4e85-b978-ed9ef32958ba)
+### 2. List Produk (All)
+![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/1c520ba0-10cd-4be9-92e7-8c9cf55e6305)
+### 3. Tambah Produk
+![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/55da8b64-22f0-4d42-8018-5ca4daa8f73f)
+### 4. Edit Produk
+![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/0bb8e459-92b7-4269-9738-166af4a26cd8)
+### 5. Hapus Produk
+![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/a16c4e0e-dcfe-4cd5-be1e-ea127a59f6fb)
+![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/331f03a2-5406-4f8a-935b-df279eb040c5)
 
