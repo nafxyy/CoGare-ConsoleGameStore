@@ -79,6 +79,7 @@ Route::middleware('auth')->group(function () {
         Route::get('data/console/{id}', 'index')->name('keranjang.add');
         Route::post('data/console/{id}', 'pesan')->name('keranjang.pesan');
         Route::get('data/checkout', 'checkout')->name('keranjang.checkout');
+        Route::delete('/keranjang/remove/{id}', [KeranjangController::class, 'removeItem'])->name('keranjang.remove');
         // Route::get('/data/keranjangedit/{id}', 'edit')->name('keranjang.edit');
         // Route::post('/data/keranjangedit/{id}/action','update')->name('keranjang.update');
         // Route::post('/data/keranjangdelete/{id}/action', 'delete')->name('keranjang.delete');
@@ -138,7 +139,12 @@ Route::get('/data/keranjang', function () {
         $pesanan->total_item = 0;
         $pesanan->save();
     }
-    return view('data.keranjang', ['keranjang' => Keranjang::where('pesanan_id', $pesanan->id)->get(), 'pesanan' => $pesanan]);
+    return view(
+        'data.keranjang', [
+            'keranjang' => Keranjang::where('pesanan_id', $pesanan->id)->get(),
+            'pesanan' => Pesanan::where('user_id', $userId)->where('status', 'belum_dibayar')->first()
+        ]
+    );
 })->name('data.keranjang');
 
 Route::get('/data/history', function () {

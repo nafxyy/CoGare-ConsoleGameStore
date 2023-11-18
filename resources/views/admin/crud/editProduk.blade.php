@@ -101,7 +101,7 @@
                     });
                 </script> --}}
                 <button type="submit"
-                    class="w-full h-auto py-4 mt-16 text-white font-medium bg-slate-900 rounded-md flex-auto just hover:bg-slate-700">Tambah Data</button>
+                    class="w-full h-auto py-4 mt-16 text-white font-medium bg-slate-900 rounded-md flex-auto just hover:bg-slate-700">Edit Data</button>
             </form>
         </div>
     </div>

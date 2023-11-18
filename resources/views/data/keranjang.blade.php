@@ -23,7 +23,11 @@
                             <p class="mr-2">Qty: {{ $ps->jumlah_item }}</p>
                             <p class="text-green-600 font-bold">Rp {{ number_format($ps->jumlah_harga, 0, ',', '.') }}</p>
                             <div class="pl-6">
-                                <button class="bg-red-500 text-white px-2 py-1 mr-2 rounded-md">Remove</button>
+                                <form action="{{ route('keranjang.remove', ['id' => $ps->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 text-white px-2 py-1 mr-2 rounded-md">Remove</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -32,8 +36,9 @@
                 {{-- Total --}}
                 <div class="flex justify-between mb-4 pr-20">
                     <div class="text-lg font-semibold">
-                        <p class="mb-2">Total Item : {{ $pesanan->pluck('total_item')[0]}}</p>
-                        <p class="text-xl font-bold">Total Price : Rp {{ number_format($pesanan->pluck('jumlah_harga')[0], 0, ',', '.')}},00</p>
+
+                        <p class="mb-2">Total Item : {{ $pesanan->total_item}}</p>
+                        <p class="text-xl font-bold">Total Price : Rp {{ number_format($pesanan->jumlah_harga, 0, ',', '.')}},00</p>
                     </div>
                     {{-- checkout button --}}
                     <div>

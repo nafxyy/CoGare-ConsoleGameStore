@@ -1,6 +1,6 @@
-<div class="w-[320px]">
-    <div class="fixed flex flex-col h-screen bg-slate-800  justify-between">
-        <div class="w-full flex flex-col items-center mt-2">
+<div class="w-[300px]">
+    <div class="fixed flex flex-col h-screen bg-slate-800 pt-[2%]">
+        <div class="w-full flex flex-col items-center mt-2 mb-24">
             <img src="{{asset('assets/images/logopolos.png')}}" alt="" class="items-center w-[200px] object-contain">
         </div>
 

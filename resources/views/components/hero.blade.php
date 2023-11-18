@@ -31,15 +31,6 @@
             @endforeach
 
         </div>
-        {{-- <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
-            @foreach ($gamepad as $gp)
-                <div class="bg-slate-900 p-4 rounded-lg shadow-lg text-center text-white">
-                    <img src="{{ asset('assets/images/console/' . $gp->gambar) }}" alt="Console Games" class="w-full h-auto">
-                    <h1 class="text-xl font-semibold mt-4">{{ $gp->nama }}</h1>
-                </div>
-            @endforeach
-
-        </div> --}}
     </div>
 
     <script>

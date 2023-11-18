@@ -34,7 +34,7 @@
                     <path d="M2.5 9.5a.5.5 0 0 1 .5.5V14a1 1 0 0 0 1 1h9a.5.5 0 0 1 0 1h-10a2 2 0 0 1-2-2v-4a.5.5 0 0 1 .5-.5z" />
                     <path fill-rule="evenodd" d="M2 8a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3a.5.5 0 0 0 1 0V8a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v3a.5.5 0 0 0 1 0V8z" />
                 </svg>
-                <p class="ml-3 font-bold text-xl">Histori Pesanan</p>
+                <p class="ml-3 font-bold text-xl">Histori   </p>
             </a>
             @endauth
             <a href="{{ route('logout') }}" class="items-center p-5 flex text-white mx-8 mt-5 hover:bg-slate-900 rounded-md">

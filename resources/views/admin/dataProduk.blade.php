@@ -4,10 +4,10 @@
 @endsection
 
 @section('content')
-    <div class="w-full h-full flex">
+    <div class="w-full flex">
         @include('components.sidebarAdmin')
-        <div class="w-full flex flex-col bg-slate-900">
-            <div class="h-full m-4 p-5 bg-white rounded-lg drop-shadow-md">
+        <div class="w-full h-full p-5 flex flex-col bg-slate-900">
+            <div class="m-4 p-5 bg-white rounded-lg drop-shadow-md">
                 <p class="text-4xl font-bold mb-4">List Data Produk</p>
                 <hr><br>
                 <div class="w-full h-auto flex justify-start">

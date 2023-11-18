@@ -11,10 +11,6 @@ use Illuminate\Http\Request;
 
 class KeranjangController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
 
     public function index($id)
     {
@@ -101,51 +97,19 @@ class KeranjangController extends Controller
         return view('data.checkout_sukses');
     }
 
-    public function delete($id)
+    public function removeItem($id)
     {
-        $pesanan_detail = Keranjang::where('id', $id)->first();
+        $keranjangItem = Keranjang::find($id);
 
-        $pesanan = Pesanan::where('id', $pesanan_detail->pesanan_id)->first();
-        $pesanan->jumlah_harga = $pesanan->jumlah_harga-$pesanan_detail->jumlah_harga;
-        $pesanan->update();
-
-
-        $pesanan_detail->delete();
-
-        session()->flash('successedit', 'Berhasil Hapus Produk!');
-        return redirect('check-out');
-    }
-
-    public function konfirmasi()
-    {
-        $user = User::where('id', Auth::user()->id)->first();
-
-        if(empty($user->alamat))
-        {
-            session()->flash('successedit', 'Error');
-            return redirect('profile');
+        if ($keranjangItem) {
+            $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status','belum_dibayar')->first();
+            $pesanan->total_item -= $keranjangItem->jumlah_item;
+            $pesanan->jumlah_harga -= $keranjangItem->jumlah_harga;
+            $pesanan->update();
+            $keranjangItem->delete();
+            return redirect()->back()->with('success', 'Berhasil Hapus Item');
         }
 
-        if(empty($user->nohp))
-        {
-            session()->flash('successedit', 'Error');
-            return redirect('profile');
-        }
-
-        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
-        $pesanan_id = $pesanan->id;
-        $pesanan->status = 1;
-        $pesanan->update();
-
-        $pesanan_details = Keranjang::where('pesanan_id', $pesanan_id)->get();
-        foreach ($pesanan_details as $pesanan_detail) {
-            $produk = Produk::where('id', $pesanan_detail->Produk_id)->first();
-            $produk->stok = $produk->stok-$pesanan_detail->jumlah;
-            $produk->update();
-        }
-
-        session()->flash('successedit', 'Sukses Bayar Produk!');
-        return redirect('history/'.$pesanan_id);
-
+        return redirect()->back()->with('error', 'Item tidak Ditemukan');
     }
 }

@@ -61,14 +61,11 @@ class AuthController extends Controller
             if ($user->role == 'admin') {
                 return redirect('/admin/dashboardAdmin');
             } elseif ($user->role == 'user') {
-                // Cek apakah pesanan belum ada dengan status belum dibayar
                 $pesananBelumDibayar = Pesanan::where([
                     'user_id' => $user->id,
                     'status' => 'belum dibayar',
                 ])->first();
 
-
-                // Redirect ke halaman utama jika pesanan sudah ada
                 return redirect('/');
 
             }

@@ -7,32 +7,31 @@
         <div class="w-full">
             @include('components.navbar')
             <div class="container mx-auto mt-8 ml-6 pt-[10%]">
-                <h1 class="text-4xl font-bold mb-8">Keranjang Anda</h1>
+                <h1 class="text-4xl font-bold mb-8">Histori Transaksi {{ auth()->user()->username }}</h1>
 
                 {{-- Item --}}
-                @foreach ($history as $hs)
-
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Harga</td>
-                            <td>:</td>
-                            <td>Rp. {{$hs->jumlah_harga}}</td>
-                        </tr>
-                        <tr>
-                            <td>Stok</td>
-                            <td>:</td>
-                            <td>{{$hs->total_item}}</td>
-                        </tr>
-                        <tr>
-                            <td>Keterangan</td>
-                            <td>:</td>
-                            <td>{{ $hs->kode }}</td>
-                        </tr>
-
-                    </tbody>
-                </table>
-                @endforeach
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <table class="min-w-full table-auto">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-2">No.</th>
+                                <th class="px-4 py-2">Harga</th>
+                                <th class="px-4 py-2">Jumlah Item</th>
+                                <th class="px-4 py-2">Tanggal Transaksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($history as $index => $hs)
+                                <tr>
+                                    <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                                    <td class="border px-4 py-2">Rp. {{ $hs->jumlah_harga }}</td>
+                                    <td class="border px-4 py-2">{{ $hs->total_item }} Item</td>
+                                    <td class="border px-4 py-2">{{ $hs->tanggal }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
