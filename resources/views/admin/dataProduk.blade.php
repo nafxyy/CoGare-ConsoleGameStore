@@ -1,6 +1,6 @@
 @extends('layouts.global')
 @section('title')
-    Data Gamepad - Admin
+    Data Produk - Admin
 @endsection
 
 @section('content')
