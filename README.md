@@ -66,7 +66,7 @@ Lalu untuk User Normal sama seperti user pada umumnya, yaitu dapat melihat, meme
 ##
 ## Menu Admin:
 ### 1. Dashboard
-![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/749ec1ae-9df1-4e85-b978-ed9ef32958ba)
+![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/3d30324d-7a57-464b-bf26-b2ea8664766e)
 ### 2. List Produk (All)
 ![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/1c520ba0-10cd-4be9-92e7-8c9cf55e6305)
 ### 3. Tambah Produk
