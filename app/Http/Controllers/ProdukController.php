@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ProdukController extends Controller
 {
     public function tambah()
     {
-        return view('admin.crud.addGamepad', [
-            'produk' => Produk::all()
+        $endpoint = env('BASE_ENV').'/api/admin/crud/dataProduk';
+        $data = Http::get($endpoint);
+        return view('admin.crud.addProduk',[
+        'produk'=>$data
         ]);
     }
 
@@ -41,7 +44,7 @@ class ProdukController extends Controller
 
     public function edit($id)
     {
-        return view('admin.crud.editGamepad', [
+        return view('admin.crud.editProduk', [
             'produk' => Produk::all()->where('id', $id)->first(),
         ]);
     }

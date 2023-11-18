@@ -1,5 +1,5 @@
-<div class="w-[400px] bg-slate-800 ">
-    <div class="fixed flex flex-col h-screen">
+<div class="w-[320px]">
+    <div class="fixed flex flex-col h-screen bg-slate-800  justify-between">
         <div class="w-full flex flex-col items-center mt-2">
             <img src="{{asset('assets/images/logopolos.png')}}" alt="" class="items-center w-[200px] object-contain">
         </div>
@@ -18,6 +18,9 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <line x1="6" y1="11" x2="10" y2="11" /> <line x1="8" y1="9" x2="8" y2="13" /> <line x1="15" y1="12" x2="15.01" y2="12" /> <line x1="18" y1="10" x2="18.01" y2="10" /> <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" /> </svg>
                 <p class="ml-3 font-bold text-xl">Data Produk</p>
             </a>
+
+        </div>
+        <div>
             <a href="{{ route('logout') }}" class="items-center p-5 flex text-white mx-8 mt-5 hover:bg-slate-900 rounded-md">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
@@ -26,7 +29,6 @@
                 </svg>
                 <p class="ml-3 font-bold text-xl">Logout</p>
             </a>
-
         </div>
 
     </div>
