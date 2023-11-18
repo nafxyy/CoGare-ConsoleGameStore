@@ -6,12 +6,27 @@
 ### 1. Maezar Abdillah (2109106029)
 ### 2. Muhammad Naufal Ihsan Maulidin (2109106034)
 
+##
+## Logo Projek:
+![logo](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/9b011352-8240-420a-948f-b459203b895d)
 
 ##
-## Deskripsi Projek:
+## Deskripsi Singkat Projek:
 CoGare merupakan sebuah situs yang meliputi sebuah sistem jual beli Console dan juga Game. Website ini terbagi menjadi 2 User, yaitu Admin dan User Normal.
 Admin dapat melakukan berbagai fungsi pada data website, fitur utama pada Admin adalah CRUD pada data Produk yang mencakup Console, Gamepad dan Games.
 Lalu untuk User Normal sama seperti user pada umumnya, yaitu dapat melihat, memesan dan juga mencari data Produk Console / Game yang diinginkan.
+
+##
+## Fitur - Fitur Projek:
+### User:
+- Login Logout
+- Order Produk
+- Lihat Histori Pembelian
+- Search Produk
+
+### Admin:
+- Login Logout
+- CRUD Produk
 
 ##
 ## Modul yang Diterapkan:
