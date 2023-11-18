@@ -6,12 +6,36 @@
 ### 1. Maezar Abdillah (2109106029)
 ### 2. Muhammad Naufal Ihsan Maulidin (2109106034)
 
+##
+## Logo Projek:
+![logo](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/9b011352-8240-420a-948f-b459203b895d)
 
 ##
-## Deskripsi Projek:
+## Deskripsi Singkat Projek:
 CoGare merupakan sebuah situs yang meliputi sebuah sistem jual beli Console dan juga Game. Website ini terbagi menjadi 2 User, yaitu Admin dan User Normal.
 Admin dapat melakukan berbagai fungsi pada data website, fitur utama pada Admin adalah CRUD pada data Produk yang mencakup Console, Gamepad dan Games.
 Lalu untuk User Normal sama seperti user pada umumnya, yaitu dapat melihat, memesan dan juga mencari data Produk Console / Game yang diinginkan.
+
+##
+## Fitur - Fitur Projek:
+### User:
+- Login Logout
+- Order Produk
+- Lihat Histori Pembelian
+- Search Produk
+
+### Admin:
+- Login Logout
+- CRUD Produk
+
+##
+## Modul yang Diterapkan:
+- Routing & Blade :white_check_mark:
+- Database :white_check_mark:
+- Eloquent & Relationship :white_check_mark:
+- Auth & Middleware :white_check_mark:
+- CRUD :white_check_mark:
+- API :white_check_mark:
 
 ##
 ## Hasil Screenshot:
@@ -29,6 +53,7 @@ Lalu untuk User Normal sama seperti user pada umumnya, yaitu dapat melihat, meme
 ### 6. List Produk (Gamepad)
 ![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/c42b86af-bcfa-48dd-92fd-61c303e77573)
 ### 7. List Produk (Games)
+![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/c8fb98ac-2270-4645-ad87-3975a3521ed5)
 ### 8. Keranjang
 ![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/e41cd7f7-5f0e-4fac-9d17-0639cfd30fb1)
 ### 9. Checkout
@@ -51,4 +76,6 @@ Lalu untuk User Normal sama seperti user pada umumnya, yaitu dapat melihat, meme
 ### 5. Hapus Produk
 ![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/a16c4e0e-dcfe-4cd5-be1e-ea127a59f6fb)
 ![image](https://github.com/nafxyy/CoGare-ConsoleGameStore/assets/92091542/331f03a2-5406-4f8a-935b-df279eb040c5)
+
+### Respect yang udah baca sampe sini :punch:
 
