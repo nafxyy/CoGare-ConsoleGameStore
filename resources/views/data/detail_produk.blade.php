@@ -1,7 +1,7 @@
 {{-- Product Detail Page --}}
 @extends('layouts.global')
 @section('title')
-Detail Produk
+    CoGare - Detail Produk
 @endsection
 
 @section('content')

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('status');
             $table->integer('kode');
             $table->integer('jumlah_harga');
+            $table->integer('total_item');
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@ class Pesanan extends Model
     use HasFactory;
 
     protected $table = 'pesanans';
-    protected $fillable = ['user_id', 'tanggal', 'status', 'kode', 'jumlah_harga', 'total_item'];
+    protected $fillable = ['user_id', 'id', 'tanggal', 'status', 'kode', 'jumlah_harga', 'total_item'];
     public function keranjang(): HasMany
     {
         return $this->hasMany(Keranjang::class, 'pesanan_id');

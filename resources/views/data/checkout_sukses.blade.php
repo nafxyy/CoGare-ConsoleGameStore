@@ -1,6 +1,6 @@
 @extends('layouts.global')
 @section('title')
-    Checkout Sukses
+    CoGare - Checkout Sukses
 @endsection
 
 @section('content')

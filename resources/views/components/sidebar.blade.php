@@ -27,7 +27,7 @@
                 <p class="ml-3 font-bold text-xl">Games</p>
             </a>
             @auth
-            <a href="{{ route('data.games') }}" class="items-center p-5 flex text-white mx-8 mt-5 hover:bg-slate-900 rounded-md">
+            <a href="{{ route('data.history') }}" class="items-center p-5 flex text-white mx-8 mt-5 hover:bg-slate-900 rounded-md">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
                     <path d="M2.5 4.5a.5.5 0 0 1 .5.5V14a1 1 0 0 0 1 1h9a.5.5 0 0 1 0 1h-10a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
                     <path fill-rule="evenodd" d="M2 1a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3a.5.5 0 0 0 1 0V1a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v3a.5.5 0 0 0 1 0V2z" />

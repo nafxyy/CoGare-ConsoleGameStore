@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function registerAction(Request $request) {
+    public function registerAction(Request $request)
+    {
         // Periksa apakah password dan konfirmasi password cocok
         if ($request->password !== $request->confirm_password) {
             session()->flash('error', 'Konfirmasi password Anda salah!');
@@ -47,7 +48,8 @@ class AuthController extends Controller
         session()->flash('success', 'Akun berhasil dibuat!');
         return redirect('/auth/login');
     }
-    public function loginAction(Request $request) {
+    public function loginAction(Request $request)
+    {
         $data = [
             'username' => $request->username,
             'password' => $request->password,
@@ -65,26 +67,10 @@ class AuthController extends Controller
                     'status' => 'belum dibayar',
                 ])->first();
 
-                if (!$pesananBelumDibayar) {
-                    // Jika pesanan belum ada, buat pesanan baru
-                    $kodeUnik = rand(0,10);
-                    $tanggalSekarang = now();
 
-                    $pesananBaru = Pesanan::create([
-                        'user_id' => $user->id,
-                        'tanggal' => $tanggalSekarang,
-                        'status' => 'belum dibayar',
-                        'kode' => $kodeUnik,
-                        'jumlah_harga' => 0,
-                        'total_item' => 0,
-                    ]);
+                // Redirect ke halaman utama jika pesanan sudah ada
+                return redirect('/');
 
-                    // Lakukan redirect atau tampilkan pesan sesuai kebutuhan
-                    return redirect('/');
-                } else {
-                    // Redirect ke halaman utama jika pesanan sudah ada
-                    return redirect('/');
-                }
             }
         } else {
             session()->flash('error', 'Username atau Password anda salah!');
@@ -92,7 +78,8 @@ class AuthController extends Controller
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         Auth::logout();
         return redirect('/');
     }
