@@ -16,5 +16,5 @@ use App\Http\Controllers\API\ApiController;
 */
 
 Route::controller(ApiController::class)->group(function () {
-    Route::get('admin/crud/dataGamepad','getProduk');
+    Route::get('admin/crud/dataProduk','getProduk');
 });
